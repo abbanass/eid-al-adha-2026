@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NASS Media · Eid Al-Adha Frame Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --gold:       #c9a44a;
+    --gold-light: #e6c97a;
+    --gold-deep:  #8a6820;
+    --ink:        #0e1a15;
+    --ink-soft:   #1c2e25;
+    --surface:    #f7f3eb;
+    --surface-2:  #ede8db;
+    --surface-3:  #e2dace;
+    --text-1:     #1a2a20;
+    --text-2:     #4a5e50;
+    --text-3:     #7a8e7e;
+    --border:     rgba(201,164,74,0.25);
+    --shadow:     0 8px 40px rgba(14,26,21,0.18);
+    --radius:     16px;
+  }
+
+  html { font-size: 16px; }
+
+  body {
+    background: var(--ink);
+    background-image:
+      radial-gradient(ellipse 80% 60% at 20% 10%, rgba(201,164,74,0.08) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 80% at 80% 90%, rgba(201,164,74,0.05) 0%, transparent 60%);
+    font-family: 'DM Sans', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 32px 20px 60px;
+  }
+
+  /* ── Header ──────────────────────────────────────────────────── */
+  .masthead {
+    width: 100%;
+    max-width: 1160px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 36px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .masthead-brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .masthead-icon {
+    width: 44px; height: 44px;
+    background: linear-gradient(135deg, var(--gold), var(--gold-deep));
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px;
+    box-shadow: 0 4px 16px rgba(201,164,74,0.3);
+  }
+
+  .masthead-title {
+    font-family: 'Cinzel', serif;
+    color: var(--gold-light);
+    font-size: 1.1rem;
+    letter-spacing: 0.08em;
+    line-height: 1.2;
+  }
+
+  .masthead-title small {
+    display: block;
+    font-family: 'DM Sans', sans-serif;
+    color: var(--text-3);
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-top: 2px;
+  }
+
+  .masthead-badge {
+    background: rgba(201,164,74,0.12);
+    border: 1px solid var(--border);
+    border-radius: 60px;
+    padding: 6px 16px;
+    color: var(--gold);
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  /* ── Main layout ─────────────────────────────────────────────── */
+  .studio {
+    width: 100%;
+    max-width: 1160px;
+    display: grid;
+    grid-template-columns: 360px 1fr;
+    gap: 24px;
+    align-items: start;
+  }
+
+  @media (max-width: 820px) {
+    .studio { grid-template-columns: 1fr; }
+    .preview-col { order: -1; }
+  }
+
+  /* ── Panel card ──────────────────────────────────────────────── */
+  .panel {
+    background: var(--surface);
+    border-radius: 24px;
+    border: 1px solid rgba(255,255,255,0.06);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+  }
+
+  .panel-header {
+    background: linear-gradient(135deg, var(--ink-soft), #0e1f18);
+    padding: 20px 24px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .panel-header-icon {
+    width: 36px; height: 36px;
+    background: linear-gradient(135deg, rgba(201,164,74,0.2), rgba(201,164,74,0.05));
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+
+  .panel-header h2 {
+    font-family: 'Cinzel', serif;
+    color: var(--gold-light);
+    font-size: 0.95rem;
+    letter-spacing: 0.06em;
+    line-height: 1.3;
+  }
+
+  .panel-header p {
+    color: var(--text-3);
+    font-size: 0.72rem;
+    margin-top: 2px;
+  }
+
+  .panel-body {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  /* ── Status bar ──────────────────────────────────────────────── */
+  .status-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--surface-2);
+    border: 1px solid var(--surface-3);
+    border-radius: 12px;
+    padding: 10px 14px;
+    font-size: 0.78rem;
+    color: var(--text-2);
+  }
+
+  .status-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: #d4a017;
+    flex-shrink: 0;
+    animation: pulse 1.5s ease-in-out infinite;
+  }
+
+  .status-dot.ok  { background: #3cb371; animation: none; }
+  .status-dot.err { background: #c0392b; animation: none; }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50%       { opacity: 0.5; transform: scale(0.8); }
+  }
+
+  /* ── Upload zone ─────────────────────────────────────────────── */
+  .upload-zone {
+    position: relative;
+    border: 2px dashed var(--surface-3);
+    border-radius: 14px;
+    padding: 22px 18px;
+    text-align: center;
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s;
+  }
+
+  .upload-zone:hover, .upload-zone.drag-over {
+    border-color: var(--gold);
+    background: rgba(201,164,74,0.05);
+  }
+
+  .upload-zone input[type="file"] {
+    position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%;
+  }
+
+  .upload-zone-icon {
+    font-size: 28px;
+    margin-bottom: 8px;
+    line-height: 1;
+    display: block;
+  }
+
+  .upload-zone-title {
+    font-weight: 600;
+    font-size: 0.88rem;
+    color: var(--text-1);
+    margin-bottom: 4px;
+  }
+
+  .upload-zone-sub {
+    font-size: 0.72rem;
+    color: var(--text-3);
+  }
+
+  .upload-thumb {
+    display: none;
+    align-items: center;
+    gap: 12px;
+    background: var(--surface-2);
+    border: 1px solid var(--surface-3);
+    border-radius: 12px;
+    padding: 10px 14px;
+  }
+
+  .upload-thumb img {
+    width: 40px; height: 40px;
+    border-radius: 8px;
+    object-fit: cover;
+    border: 1px solid var(--border);
+  }
+
+  .upload-thumb-info { flex: 1; min-width: 0; }
+  .upload-thumb-name { font-size: 0.8rem; font-weight: 600; color: var(--text-1); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .upload-thumb-size { font-size: 0.7rem; color: var(--text-3); }
+
+  .thumb-remove {
+    background: none; border: none; cursor: pointer;
+    color: var(--text-3); font-size: 18px; padding: 2px 6px;
+    border-radius: 6px; transition: color 0.2s, background 0.2s;
+  }
+  .thumb-remove:hover { color: #c0392b; background: rgba(192,57,43,0.1); }
+
+  /* ── Divider label ───────────────────────────────────────────── */
+  .section-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-3);
+  }
+
+  .section-label::before,
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--surface-3);
+  }
+
+  /* ── Field ───────────────────────────────────────────────────── */
+  .field { display: flex; flex-direction: column; gap: 6px; }
+
+  .field label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-2);
+  }
+
+  .field input {
+    background: white;
+    border: 1.5px solid var(--surface-3);
+    border-radius: 10px;
+    padding: 11px 16px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    color: var(--text-1);
+    transition: border-color 0.2s, box-shadow 0.2s;
+    width: 100%;
+  }
+
+  .field input:focus {
+    outline: none;
+    border-color: var(--gold);
+    box-shadow: 0 0 0 3px rgba(201,164,74,0.15);
+  }
+
+  .field input::placeholder { color: var(--text-3); }
+
+  /* ── Photo area controls ─────────────────────────────────────── */
+  .coords-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .field-sm label { font-size: 0.65rem; }
+  .field-sm input { padding: 8px 12px; font-size: 0.82rem; }
+
+  /* ── Download button ─────────────────────────────────────────── */
+  .btn-download {
+    background: linear-gradient(135deg, var(--gold), var(--gold-deep));
+    border: none;
+    border-radius: 12px;
+    padding: 14px 20px;
+    color: white;
+    font-family: 'Cinzel', serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: opacity 0.2s, transform 0.15s, box-shadow 0.2s;
+    box-shadow: 0 6px 20px rgba(201,164,74,0.35);
+    margin-top: 4px;
+  }
+
+  .btn-download:hover { opacity: 0.92; transform: translateY(-1px); box-shadow: 0 10px 28px rgba(201,164,74,0.4); }
+  .btn-download:active { transform: translateY(0); }
+  .btn-download:disabled { opacity: 0.45; cursor: not-allowed; transform: none; }
+
+  .btn-download svg { width: 18px; height: 18px; fill: none; stroke: white; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+  /* ── Toast ───────────────────────────────────────────────────── */
+  .toast {
+    position: fixed;
+    bottom: 32px; left: 50%; transform: translateX(-50%) translateY(16px);
+    background: #1c3a28;
+    border: 1px solid rgba(60,179,113,0.3);
+    color: #7de8a8;
+    padding: 12px 24px;
+    border-radius: 60px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s, transform 0.3s;
+    z-index: 999;
+    white-space: nowrap;
+  }
+
+  .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+  /* ── Preview column ──────────────────────────────────────────── */
+  .preview-col {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .preview-card {
+    background: var(--surface);
+    border-radius: 24px;
+    border: 1px solid rgba(255,255,255,0.06);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+  }
+
+  .preview-header {
+    background: linear-gradient(135deg, var(--ink-soft), #0e1f18);
+    padding: 16px 22px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .preview-header-left {
+    display: flex; align-items: center; gap: 10px;
+  }
+
+  .preview-header h3 {
+    font-family: 'Cinzel', serif;
+    color: var(--gold-light);
+    font-size: 0.88rem;
+    letter-spacing: 0.06em;
+  }
+
+  .preview-header p {
+    color: var(--text-3);
+    font-size: 0.7rem;
+  }
+
+  .live-pill {
+    display: flex; align-items: center; gap: 6px;
+    background: rgba(60,179,113,0.1);
+    border: 1px solid rgba(60,179,113,0.25);
+    border-radius: 60px;
+    padding: 4px 10px;
+    font-size: 0.68rem;
+    color: #3cb371;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+  }
+
+  .live-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: #3cb371;
+    animation: pulse 1.5s ease-in-out infinite;
+  }
+
+  .preview-body {
+    padding: 20px;
+    background: #1a2820;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .canvas-frame {
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.5), 0 0 0 1px rgba(201,164,74,0.15);
+    max-width: 100%;
+    position: relative;
+  }
+
+  canvas {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* ── Info cards ──────────────────────────────────────────────── */
+  .info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .info-card {
+    background: var(--surface);
+    border-radius: 14px;
+    border: 1px solid rgba(255,255,255,0.06);
+    padding: 14px 16px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .info-card-icon { font-size: 18px; flex-shrink: 0; line-height: 1; }
+
+  .info-card h4 {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--gold);
+    margin-bottom: 3px;
+  }
+
+  .info-card p {
+    font-size: 0.7rem;
+    color: var(--text-3);
+    line-height: 1.5;
+  }
+
+  /* ── Coord adjust note ───────────────────────────────────────── */
+  .adjust-note {
+    background: rgba(201,164,74,0.06);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 12px 14px;
+    font-size: 0.73rem;
+    color: var(--gold);
+    line-height: 1.6;
+  }
+
+  .adjust-note strong { color: var(--gold-light); }
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="masthead">
+  <div class="masthead-brand">
+    <div class="masthead-icon">☪️</div>
+    <div class="masthead-title">
+      NASS Media
+      <small>Eid Al-Adha Frame Studio</small>
+    </div>
+  </div>
+  <div class="masthead-badge">2025 · 1446 AH</div>
+</header>
+
+<!-- Studio grid -->
+<main class="studio">
+
+  <!-- ── LEFT: Controls ── -->
+  <aside>
+    <div class="panel">
+      <div class="panel-header">
+        <div class="panel-header-icon">⚙️</div>
+        <div>
+          <h2>Studio Controls</h2>
+          <p>Configure your personalised Eid banner</p>
+        </div>
+      </div>
+      <div class="panel-body">
+
+        <!-- Frame status -->
+        <div class="status-bar" id="frameStatus">
+          <div class="status-dot" id="statusDot"></div>
+          <span id="statusText">Loading frame.png…</span>
+        </div>
+
+        <!-- Upload portrait -->
+        <div class="section-label">Step 1 · Portrait Photo</div>
+
+        <div class="upload-zone" id="uploadZone">
+          <input type="file" id="photoInput" accept="image/jpeg,image/png,image/webp">
+          <span class="upload-zone-icon">🖼️</span>
+          <div class="upload-zone-title">Click or drag a portrait photo</div>
+          <div class="upload-zone-sub">JPG · PNG · WebP supported</div>
+        </div>
+
+        <div class="upload-thumb" id="uploadThumb">
+          <img id="thumbImg" src="" alt="preview">
+          <div class="upload-thumb-info">
+            <div class="upload-thumb-name" id="thumbName">—</div>
+            <div class="upload-thumb-size" id="thumbSize">—</div>
+          </div>
+          <button class="thumb-remove" id="removePhoto" title="Remove photo">✕</button>
+        </div>
+
+        <!-- Personal details -->
+        <div class="section-label">Step 2 · Personal Details</div>
+
+        <div class="field">
+          <label>Full Name</label>
+          <input type="text" id="fullName" placeholder="e.g. MUHAMMAD SAGHEER" value="FIRSTNAME LASTNAME">
+        </div>
+
+        <div class="field">
+          <label>Position / Rank</label>
+          <input type="text" id="rankPosition" placeholder="e.g. Director / CEO" value="POSITION / RANK">
+        </div>
+
+        <div class="field">
+          <label>Institution · Dept · Agency</label>
+          <input type="text" id="workplace" placeholder="e.g. NASS MEDIA | COMMUNICATIONS" value="INSTITUTION | DEPT | AGENCY">
+        </div>
+
+        <!-- Photo area fine-tuning -->
+        <div class="section-label">Step 3 · Photo Area (px)</div>
+
+        <div class="adjust-note">
+          <strong>Adjust if your frame.png has a different photo slot.</strong><br>
+          X &amp; Y = top-left corner · W = width · H = height
+        </div>
+
+        <div class="coords-grid">
+          <div class="field field-sm">
+            <label>X offset</label>
+            <input type="number" id="px" value="195">
+          </div>
+          <div class="field field-sm">
+            <label>Y offset</label>
+            <input type="number" id="py" value="310">
+          </div>
+          <div class="field field-sm">
+            <label>Width</label>
+            <input type="number" id="pw" value="410">
+          </div>
+          <div class="field field-sm">
+            <label>Height</label>
+            <input type="number" id="ph" value="505">
+          </div>
+        </div>
+
+        <!-- Download -->
+        <button class="btn-download" id="downloadBtn" disabled>
+          <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download Final Banner (PNG)
+        </button>
+
+      </div><!-- /panel-body -->
+    </div><!-- /panel -->
+
+    <!-- Info cards -->
+    <div class="info-grid" style="margin-top:16px;">
+      <div class="info-card">
+        <div class="info-card-icon">🎯</div>
+        <div>
+          <h4>Output Size</h4>
+          <p>800 × 1200 px<br>Print-ready PNG</p>
+        </div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-icon">⚡</div>
+        <div>
+          <h4>Live Preview</h4>
+          <p>Instant updates as you type or upload</p>
+        </div>
+      </div>
+    </div>
+
+  </aside>
+
+  <!-- ── RIGHT: Preview ── -->
+  <div class="preview-col">
+    <div class="preview-card">
+      <div class="preview-header">
+        <div class="preview-header-left">
+          <div>
+            <h3>Live Preview</h3>
+            <p>Your banner updates in real-time</p>
+          </div>
+        </div>
+        <div class="live-pill">
+          <div class="live-dot"></div>
+          LIVE
+        </div>
+      </div>
+      <div class="preview-body">
+        <div class="canvas-frame">
+          <canvas id="bannerCanvas" width="800" height="1200"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<!-- Toast -->
+<div class="toast" id="toast">✅ Download complete — check your downloads folder</div>
+
+<script>
+(function () {
+  'use strict';
+
+  /* ── Elements ─────────────────────────────────────────────────── */
+  const canvas      = document.getElementById('bannerCanvas');
+  const ctx         = canvas.getContext('2d');
+  const photoInput  = document.getElementById('photoInput');
+  const uploadZone  = document.getElementById('uploadZone');
+  const uploadThumb = document.getElementById('uploadThumb');
+  const thumbImg    = document.getElementById('thumbImg');
+  const thumbName   = document.getElementById('thumbName');
+  const thumbSize   = document.getElementById('thumbSize');
+  const removePhoto = document.getElementById('removePhoto');
+  const fullName    = document.getElementById('fullName');
+  const rankPos     = document.getElementById('rankPosition');
+  const workplace   = document.getElementById('workplace');
+  const pxInput     = document.getElementById('px');
+  const pyInput     = document.getElementById('py');
+  const pwInput     = document.getElementById('pw');
+  const phInput     = document.getElementById('ph');
+  const downloadBtn = document.getElementById('downloadBtn');
+  const statusDot   = document.getElementById('statusDot');
+  const statusText  = document.getElementById('statusText');
+  const toast       = document.getElementById('toast');
+
+  canvas.width  = 800;
+  canvas.height = 1200;
+
+  /* ── State ────────────────────────────────────────────────────── */
+  let frameImage    = null;
+  let portraitImage = null;
+  let portraitDataURL = null;
+  let frameLoaded   = false;
+
+  function photoArea() {
+    return {
+      x: parseInt(pxInput.value) || 195,
+      y: parseInt(pyInput.value) || 310,
+      w: parseInt(pwInput.value) || 410,
+      h: parseInt(phInput.value) || 505
+    };
+  }
+
+  const TEXT = {
+    nameY:      875,
+    positionY:  915,
+    workY:      955,
+    dateY:      1003
+  };
+
+  /* ── Frame loading ────────────────────────────────────────────── */
+  function loadFrame() {
+    const img = new Image();
+    img.crossOrigin = 'anonymous';
+
+    img.onload = () => {
+      frameImage  = img;
+      frameLoaded = true;
+      statusDot.className  = 'status-dot ok';
+      statusText.textContent = 'frame.png loaded successfully';
+      downloadBtn.disabled = false;
+      render();
+    };
+
+    img.onerror = () => {
+      frameLoaded = false;
+      statusDot.className  = 'status-dot err';
+      statusText.textContent = 'frame.png not found — place it beside this HTML file';
+      renderError();
+    };
+
+    img.src = 'frame.png?' + Date.now(); // bust cache, avoid stale 304
+  }
+
+  /* ── Render ───────────────────────────────────────────────────── */
+  function render() {
+    ctx.clearRect(0, 0, 800, 1200);
+
+    if (!frameLoaded || !frameImage) {
+      renderError();
+      return;
+    }
+
+    // Frame
+    ctx.drawImage(frameImage, 0, 0, 800, 1200);
+
+    // Portrait
+    const pa = photoArea();
+    if (portraitImage) {
+      ctx.save();
+      ctx.beginPath();
+      ctx.rect(pa.x, pa.y, pa.w, pa.h);
+      ctx.clip();
+
+      const ir = portraitImage.width  / portraitImage.height;
+      const tr = pa.w / pa.h;
+      let dw, dh, dx, dy;
+
+      if (ir > tr) {
+        dh = pa.h; dw = dh * ir;
+        dx = pa.x - (dw - pa.w) / 2; dy = pa.y;
+      } else {
+        dw = pa.w; dh = dw / ir;
+        dx = pa.x; dy = pa.y - (dh - pa.h) / 2;
+      }
+
+      ctx.drawImage(portraitImage, dx, dy, dw, dh);
+      ctx.restore();
+
+      // Subtle golden inset border
+      ctx.strokeStyle = 'rgba(230, 201, 122, 0.75)';
+      ctx.lineWidth   = 2.5;
+      ctx.strokeRect(pa.x + 1, pa.y + 1, pa.w - 2, pa.h - 2);
+
+    } else {
+      // Placeholder
+      ctx.fillStyle = 'rgba(230, 220, 200, 0.55)';
+      ctx.fillRect(pa.x, pa.y, pa.w, pa.h);
+
+      ctx.fillStyle   = '#9a8a62';
+      ctx.font        = 'bold 20px "Segoe UI", sans-serif';
+      ctx.textAlign   = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText('Upload Your Portrait',  pa.x + pa.w / 2, pa.y + pa.h / 2 - 14);
+      ctx.font        = '14px "Segoe UI", sans-serif';
+      ctx.fillStyle   = '#b0a080';
+      ctx.fillText('(JPG / PNG / WebP)',     pa.x + pa.w / 2, pa.y + pa.h / 2 + 18);
+      ctx.textBaseline = 'alphabetic';
+    }
+
+    // Text overlays
+    ctx.textAlign   = 'center';
+    ctx.shadowColor  = 'transparent';
+
+    // Name
+    const name = fullName.value.trim() || 'FIRSTNAME LASTNAME';
+    ctx.font      = 'bold 34px "Segoe UI", sans-serif';
+    ctx.fillStyle = '#1a3129';
+    ctx.fillText(name.toUpperCase(), 400, TEXT.nameY);
+
+    // Rank
+    const rank = rankPos.value.trim() || 'POSITION / RANK';
+    ctx.font      = '600 23px "Segoe UI", sans-serif';
+    ctx.fillStyle = '#4c3a28';
+    ctx.fillText(rank.toUpperCase(), 400, TEXT.positionY);
+
+    // Workplace
+    const work = workplace.value.trim() || 'INSTITUTION | DEPT | AGENCY';
+    ctx.font      = '500 19px "Segoe UI", sans-serif';
+    ctx.fillStyle = '#7a5e39';
+    ctx.fillText(work.toUpperCase(), 400, TEXT.workY);
+
+    // Date
+    const dateStr = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }).toUpperCase();
+    ctx.font      = '600 17px "Segoe UI", sans-serif';
+    ctx.fillStyle = '#b37b2e';
+    ctx.fillText(dateStr, 400, TEXT.dateY);
+  }
+
+  function renderError() {
+    ctx.fillStyle = '#0e1a15';
+    ctx.fillRect(0, 0, 800, 1200);
+
+    ctx.fillStyle   = '#c9a44a';
+    ctx.font        = 'bold 26px "Segoe UI", sans-serif';
+    ctx.textAlign   = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText('frame.png not found', 400, 570);
+
+    ctx.font      = '16px "Segoe UI", sans-serif';
+    ctx.fillStyle = '#7a8e7e';
+    ctx.fillText('Place frame.png in the same folder as this HTML file', 400, 620);
+    ctx.fillText('then refresh the page.', 400, 648);
+    ctx.textBaseline = 'alphabetic';
+  }
+
+  /* ── Photo upload ─────────────────────────────────────────────── */
+  function loadPortrait(file) {
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = e => {
+      portraitDataURL = e.target.result;
+      const img = new Image();
+      img.onload = () => {
+        portraitImage = img;
+
+        // Thumb
+        thumbImg.src  = portraitDataURL;
+        thumbName.textContent = file.name.length > 32 ? file.name.slice(0, 28) + '…' : file.name;
+        thumbSize.textContent = (file.size / 1024 > 1024)
+          ? (file.size / 1048576).toFixed(1) + ' MB'
+          : Math.round(file.size / 1024) + ' KB';
+
+        uploadThumb.style.display = 'flex';
+        uploadZone.style.display  = 'none';
+        render();
+      };
+      img.src = portraitDataURL;
+    };
+    reader.readAsDataURL(file);
+  }
+
+  photoInput.addEventListener('change', e => {
+    if (e.target.files[0]) loadPortrait(e.target.files[0]);
+  });
+
+  // Drag & drop
+  uploadZone.addEventListener('dragover', e => { e.preventDefault(); uploadZone.classList.add('drag-over'); });
+  uploadZone.addEventListener('dragleave', () => uploadZone.classList.remove('drag-over'));
+  uploadZone.addEventListener('drop', e => {
+    e.preventDefault();
+    uploadZone.classList.remove('drag-over');
+    if (e.dataTransfer.files[0]) {
+      photoInput.files = e.dataTransfer.files;
+      loadPortrait(e.dataTransfer.files[0]);
+    }
+  });
+
+  removePhoto.addEventListener('click', () => {
+    portraitImage = null;
+    portraitDataURL = null;
+    photoInput.value = '';
+    uploadThumb.style.display = 'none';
+    uploadZone.style.display  = 'block';
+    render();
+  });
+
+  /* ── Live text + coord updates ───────────────────────────────── */
+  [fullName, rankPos, workplace, pxInput, pyInput, pwInput, phInput].forEach(el => {
+    el.addEventListener('input', () => { if (frameLoaded) render(); });
+  });
+
+  /* ── Download — THE FIX ──────────────────────────────────────── */
+  /*
+   * Problem: drawImage() from frame.png taints the canvas when opened
+   *   via file:// (CORS). canvas.toDataURL() throws SecurityError.
+   *
+   * Solution:
+   *   1. Re-draw everything on a fresh OFF-SCREEN canvas using ONLY
+   *      the in-memory ImageData / ImageBitmap we already have.
+   *   2. The portrait was uploaded by the user (FileReader → data URL)
+   *      so it is never cross-origin.
+   *   3. For the frame we offer two paths:
+   *       a) If the page is served (http/https) → crossOrigin="anonymous"
+   *          is enough and the main canvas works fine.
+   *       b) If opened via file:// the main canvas may be tainted.
+   *          We rebuild the download on a fresh offscreen canvas
+   *          drawing each layer from its in-memory source.
+   */
+  downloadBtn.addEventListener('click', () => {
+    if (!frameLoaded) return;
+    render(); // ensure latest state
+
+    try {
+      // Try direct export first (works on http / https)
+      const url  = canvas.toDataURL('image/png');
+      triggerDownload(url);
+    } catch (secErr) {
+      // Tainted canvas (file:// + CORS) — rebuild offscreen
+      rebuildAndDownload();
+    }
+  });
+
+  function triggerDownload(dataURL) {
+    const safeName = (fullName.value.trim() || 'Eid_Banner').replace(/\s+/g, '_');
+    const link     = document.createElement('a');
+    link.download  = `EidFrame_${safeName}.png`;
+    link.href      = dataURL;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    showToast();
+  }
+
+  function rebuildAndDownload() {
+    const oc  = document.createElement('canvas');
+    oc.width  = 800;
+    oc.height = 1200;
+    const ox  = oc.getContext('2d');
+
+    // Step 1: draw frame from its src via a *new* image with crossOrigin
+    const fi  = new Image();
+    fi.crossOrigin = 'anonymous';
+    fi.onload = () => {
+      ox.drawImage(fi, 0, 0, 800, 1200);
+
+      // Step 2: draw portrait (data URL — never tainted)
+      const pa = photoArea();
+      if (portraitImage && portraitDataURL) {
+        const pi = new Image();
+        pi.onload = () => {
+          ox.save();
+          ox.beginPath();
+          ox.rect(pa.x, pa.y, pa.w, pa.h);
+          ox.clip();
+
+          const ir = pi.width / pi.height;
+          const tr = pa.w / pa.h;
+          let dw, dh, dx, dy;
+          if (ir > tr) { dh = pa.h; dw = dh * ir; dx = pa.x - (dw - pa.w) / 2; dy = pa.y; }
+          else          { dw = pa.w; dh = dw / ir; dx = pa.x; dy = pa.y - (dh - pa.h) / 2; }
+          ox.drawImage(pi, dx, dy, dw, dh);
+          ox.restore();
+          ox.strokeStyle = 'rgba(230,201,122,0.75)';
+          ox.lineWidth   = 2.5;
+          ox.strokeRect(pa.x + 1, pa.y + 1, pa.w - 2, pa.h - 2);
+          drawText(ox);
+          exportOffscreen(oc);
+        };
+        pi.src = portraitDataURL;
+      } else {
+        drawText(ox);
+        exportOffscreen(oc);
+      }
+    };
+    fi.onerror = () => {
+      // Last resort: try native blob export
+      canvas.toBlob(blob => {
+        if (!blob) { alert('Unable to export — try serving the file via a local server.'); return; }
+        const url = URL.createObjectURL(blob);
+        triggerDownload(url);
+        setTimeout(() => URL.revokeObjectURL(url), 5000);
+      }, 'image/png');
+    };
+    fi.src = 'frame.png?' + Date.now();
+  }
+
+  function drawText(ox) {
+    ox.textAlign   = 'center';
+    ox.shadowColor = 'transparent';
+
+    const name = fullName.value.trim() || 'FIRSTNAME LASTNAME';
+    ox.font = 'bold 34px "Segoe UI", sans-serif'; ox.fillStyle = '#1a3129';
+    ox.fillText(name.toUpperCase(), 400, TEXT.nameY);
+
+    const rank = rankPos.value.trim() || 'POSITION / RANK';
+    ox.font = '600 23px "Segoe UI", sans-serif'; ox.fillStyle = '#4c3a28';
+    ox.fillText(rank.toUpperCase(), 400, TEXT.positionY);
+
+    const work = workplace.value.trim() || 'INSTITUTION | DEPT | AGENCY';
+    ox.font = '500 19px "Segoe UI", sans-serif'; ox.fillStyle = '#7a5e39';
+    ox.fillText(work.toUpperCase(), 400, TEXT.workY);
+
+    const ds = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }).toUpperCase();
+    ox.font = '600 17px "Segoe UI", sans-serif'; ox.fillStyle = '#b37b2e';
+    ox.fillText(ds, 400, TEXT.dateY);
+  }
+
+  function exportOffscreen(oc) {
+    try {
+      const url = oc.toDataURL('image/png');
+      triggerDownload(url);
+    } catch (e) {
+      oc.toBlob(blob => {
+        if (!blob) { alert('Export failed. Please serve via a local web server (e.g. VS Code Live Server).'); return; }
+        const url = URL.createObjectURL(blob);
+        triggerDownload(url);
+        setTimeout(() => URL.revokeObjectURL(url), 5000);
+      }, 'image/png');
+    }
+  }
+
+  /* ── Toast ────────────────────────────────────────────────────── */
+  function showToast() {
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 3500);
+  }
+
+  /* ── Init ─────────────────────────────────────────────────────── */
+  render(); // draw placeholder while frame loads
+  loadFrame();
+
+})();
+</script>
+</body>
+</html>
